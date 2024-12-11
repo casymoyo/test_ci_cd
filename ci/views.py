@@ -1,5 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .models import Name  
 from .serializers import nameSerializer 
@@ -7,6 +8,7 @@ from .serializers import nameSerializer
 class nameModelViewset(ModelViewSet):
     serializer_class = nameSerializer
     queryset = Name.objects.all()  
+    permission_classes = [IsAuthenticated]
 
     def list(self, request, *args, **kwargs):
         """
