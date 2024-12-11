@@ -1,0 +1,8 @@
+services:
+  test_ci_cd:
+    build: .
+    command: gunicorn -b 0.0.0.0 -p 8300 test_ci_cd.wsgi:application
+    volumes:
+      - .:/app
+    ports:
+    - "8300:8300"
